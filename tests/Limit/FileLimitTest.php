@@ -1,6 +1,6 @@
 <?php
 
-use LeagueWrap\Limit\FileLimit;
+use JeffreyVdb\LeagueWrap\Limit\FileLimit;
 
 class LimitFileLimitTest extends PHPUnit_Framework_TestCase {
 

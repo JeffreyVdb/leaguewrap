@@ -1,6 +1,6 @@
 <?php
 
-use LeagueWrap\Api;
+use JeffreyVdb\LeagueWrap\Api;
 use Mockery as m;
 
 class FeaturedGamesTest extends PHPUnit_Framework_TestCase 
@@ -10,7 +10,7 @@ class FeaturedGamesTest extends PHPUnit_Framework_TestCase
 
 	public function setUp()
 	{
-		$client       = m::mock('LeagueWrap\Client');
+		$client       = m::mock('JeffreyVdb\LeagueWrap\Client');
 		$this->client = $client;
 	}
 

@@ -1,6 +1,6 @@
 <?php
 
-use LeagueWrap\Api;
+use JeffreyVdb\LeagueWrap\Api;
 use \Mockery as m;
 
 class StaticdataTest extends PHPUnit_Framework_TestCase{
@@ -9,7 +9,7 @@ class StaticdataTest extends PHPUnit_Framework_TestCase{
 
     public function setUp()
     {
-        $this->client = m::mock('LeagueWrap\Client');
+        $this->client = m::mock('JeffreyVdb\LeagueWrap\Client');
 
     }
 
@@ -34,7 +34,7 @@ class StaticdataTest extends PHPUnit_Framework_TestCase{
 
     public function testAppendId()
     {
-        $method = $this->getMethod('LeagueWrap\Api\Staticdata', 'appendId');
+        $method = $this->getMethod('JeffreyVdb\LeagueWrap\Api\Staticdata', 'appendId');
 
         $api = new Api('key', $this->client);
         $staticData = $api->staticData();
@@ -49,7 +49,7 @@ class StaticdataTest extends PHPUnit_Framework_TestCase{
 
     public function testSetUpParamsAll()
     {
-        $method = $this->getMethod('LeagueWrap\Api\Staticdata', 'setUpParams');
+        $method = $this->getMethod('JeffreyVdb\LeagueWrap\Api\Staticdata', 'setUpParams');
 
         $api = new Api('key', $this->client);
         $staticData = $api->staticData();
@@ -62,7 +62,7 @@ class StaticdataTest extends PHPUnit_Framework_TestCase{
 
     public function testSetUpParamsAllData()
     {
-        $method = $this->getMethod('LeagueWrap\Api\Staticdata', 'setUpParams');
+        $method = $this->getMethod('JeffreyVdb\LeagueWrap\Api\Staticdata', 'setUpParams');
 
         $api = new Api('key', $this->client);
         $staticData = $api->staticData();
@@ -76,7 +76,7 @@ class StaticdataTest extends PHPUnit_Framework_TestCase{
 
     public function testSetUpParamsDataArray()
     {
-        $method = $this->getMethod('LeagueWrap\Api\Staticdata', 'setUpParams');
+        $method = $this->getMethod('JeffreyVdb\LeagueWrap\Api\Staticdata', 'setUpParams');
 
         $api = new Api('key', $this->client);
         $staticData = $api->staticData();
@@ -88,7 +88,7 @@ class StaticdataTest extends PHPUnit_Framework_TestCase{
 
     public function testSetUpParamsDataArraySingleItem()
     {
-        $method = $this->getMethod('LeagueWrap\Api\Staticdata', 'setUpParams');
+        $method = $this->getMethod('JeffreyVdb\LeagueWrap\Api\Staticdata', 'setUpParams');
 
         $api = new Api('key', $this->client);
         $staticData = $api->staticData();
@@ -100,7 +100,7 @@ class StaticdataTest extends PHPUnit_Framework_TestCase{
 
     public function testSetUpParamsId()
     {
-        $method = $this->getMethod('LeagueWrap\Api\Staticdata', 'setUpParams');
+        $method = $this->getMethod('JeffreyVdb\LeagueWrap\Api\Staticdata', 'setUpParams');
 
         $api = new Api('key', $this->client);
         $staticData = $api->staticData();
@@ -112,7 +112,7 @@ class StaticdataTest extends PHPUnit_Framework_TestCase{
 
     public function testSetUpParamsIdData()
     {
-        $method = $this->getMethod('LeagueWrap\Api\Staticdata', 'setUpParams');
+        $method = $this->getMethod('JeffreyVdb\LeagueWrap\Api\Staticdata', 'setUpParams');
 
         $api = new Api('key', $this->client);
         $staticData = $api->staticData();
@@ -126,7 +126,7 @@ class StaticdataTest extends PHPUnit_Framework_TestCase{
 
     public function testSetUpParamsDataById()
     {
-        $method = $this->getMethod('LeagueWrap\Api\Staticdata', 'setUpParams');
+        $method = $this->getMethod('JeffreyVdb\LeagueWrap\Api\Staticdata', 'setUpParams');
 
         $api = new Api('key', $this->client);
         $staticData = $api->staticData();
@@ -141,7 +141,7 @@ class StaticdataTest extends PHPUnit_Framework_TestCase{
 
     public function testLanguage()
     {
-        $method = $this->getMethod('LeagueWrap\Api\Staticdata', 'setUpParams');
+        $method = $this->getMethod('JeffreyVdb\LeagueWrap\Api\Staticdata', 'setUpParams');
 
         $api = new Api('key', $this->client);
         $staticData = $api->staticData();

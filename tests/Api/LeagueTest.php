@@ -1,6 +1,6 @@
 <?php
 
-use LeagueWrap\Api;
+use JeffreyVdb\LeagueWrap\Api;
 use Mockery as m;
 
 class ApiLeagueTest extends PHPUnit_Framework_TestCase {
@@ -9,7 +9,7 @@ class ApiLeagueTest extends PHPUnit_Framework_TestCase {
 
 	public function setUp()
 	{
-		$client       = m::mock('LeagueWrap\Client');
+		$client       = m::mock('JeffreyVdb\LeagueWrap\Client');
 		$this->client = $client;
 	}
 
@@ -30,11 +30,11 @@ class ApiLeagueTest extends PHPUnit_Framework_TestCase {
 
 		$api     = new Api('key', $this->client);
 		$leagues = $api->league()->league(272354);
-		$this->assertTrue($leagues[0] instanceof LeagueWrap\Dto\League);
+		$this->assertTrue($leagues[0] instanceof JeffreyVdb\LeagueWrap\Dto\League);
 	}
 
 	/**
-	 * @expectedException LeagueWrap\Exception\ListMaxException
+	 * @expectedException JeffreyVdb\LeagueWrap\Exception\ListMaxException
 	 */
 	public function testLeagueListMaxException()
 	{
@@ -63,7 +63,7 @@ class ApiLeagueTest extends PHPUnit_Framework_TestCase {
 		$api     = new Api('key', $this->client);
 		$gamerxz = $api->summoner()->info('GamerXz');
 		$api->league()->league($gamerxz);
-		$this->assertTrue($gamerxz->league('GamerXz') instanceof LeagueWrap\Dto\League);
+		$this->assertTrue($gamerxz->league('GamerXz') instanceof JeffreyVdb\LeagueWrap\Dto\League);
 	}
 
 	public function testLeagueSummonerEntry()
@@ -141,7 +141,7 @@ class ApiLeagueTest extends PHPUnit_Framework_TestCase {
 			74602,
 			272354,
 		]);
-		$this->assertTrue($summoners[272354][0] instanceof LeagueWrap\Dto\League);
+		$this->assertTrue($summoners[272354][0] instanceof JeffreyVdb\LeagueWrap\Dto\League);
 	}
 
 	public function testLeagueMultipleSummoners()
@@ -166,7 +166,7 @@ class ApiLeagueTest extends PHPUnit_Framework_TestCase {
 			7024,
 		]);
 		$api->league()->league($summoners);
-		$this->assertTrue($summoners['bakasan']->leagues[0] instanceof LeagueWrap\Dto\League);
+		$this->assertTrue($summoners['bakasan']->leagues[0] instanceof JeffreyVdb\LeagueWrap\Dto\League);
 	}
 
 	public function testEntry()
@@ -206,7 +206,7 @@ class ApiLeagueTest extends PHPUnit_Framework_TestCase {
 			7024,
 		]);
 		$api->league()->league($summoners, true);
-		$this->assertTrue($summoners['GamerXz']->leagues[0] instanceof LeagueWrap\Dto\League);
+		$this->assertTrue($summoners['GamerXz']->leagues[0] instanceof JeffreyVdb\LeagueWrap\Dto\League);
 	}
 
 	public function testChallenger()

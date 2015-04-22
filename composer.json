@@ -1,9 +1,16 @@
 {
-    "name": "paquettg/leaguewrap",
+    "name": "jeffreyvdb/leaguewrap",
     "type": "library",
     "description": "A wrapper for the League of Legends API.",
     "version": "0.6.2",
-    "keywords": ["League", "legends", "wrap", "api", "facade", "proxy"],
+    "keywords": [
+        "League",
+        "legends",
+        "wrap",
+        "api",
+        "facade",
+        "proxy"
+    ],
     "homepage": "https://github.com/paquettg/leaguewrap",
     "license": "MIT",
     "authors": [
@@ -11,11 +18,16 @@
             "name": "Gilles Paquette",
             "email": "paquettg@gmail.com",
             "homepage": "http://gillespaquette.ca"
+        },
+        {
+            "name": "Jeffrey Vandenborne",
+            "email": "vandenbornejeffrey@gmail.com",
+            "homepage": "http://justdevstuff.com"
         }
     ],
     "require": {
         "php": ">=5.4",
-        "guzzlehttp/guzzle": "4.0.*"
+        "guzzlehttp/guzzle": "5.0.*@dev"
     },
     "require-dev": {
         "phpunit/phpunit": "3.7.*",
@@ -23,9 +35,9 @@
         "satooshi/php-coveralls": "0.6.*"
     },
     "autoload": {
-        "psr-0": { 
-        	"LeagueWrap": "src/"
-       	}
+        "psr-4": {
+            "JeffreyVdb\\LeagueWrap\\": "src/"
+        }
     },
     "minimum-stability": "dev"
 }

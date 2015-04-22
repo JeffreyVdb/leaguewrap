@@ -9,8 +9,8 @@ class CacheTest extends PHPUnit_Framework_TestCase {
 
 	public function setUp()
 	{
-		$this->cache  = m::mock('LeagueWrap\CacheInterface');
-		$this->client = m::mock('LeagueWrap\Client');
+		$this->cache  = m::mock('JeffreyVdb\LeagueWrap\CacheInterface');
+		$this->client = m::mock('JeffreyVdb\LeagueWrap\Client');
 	}
 
 	public function tearDown()
@@ -43,7 +43,7 @@ class CacheTest extends PHPUnit_Framework_TestCase {
 		             ])->once()
 		             ->andReturn($champions);
 
-		$api      = new LeagueWrap\Api('key', $this->client);
+		$api      = new JeffreyVdb\LeagueWrap\Api('key', $this->client);
 		$champion = $api->champion()
 		                ->remember(60, $this->cache);
 		$champion->free();
@@ -52,7 +52,7 @@ class CacheTest extends PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @expectedException LeagueWrap\Response\HttpClientError
+	 * @expectedException JeffreyVdb\LeagueWrap\Response\HttpClientError
 	 * @expectedExceptionMessage Resource not found.
 	 */
 	public function testRememberChampionClientError()
@@ -71,16 +71,16 @@ class CacheTest extends PHPUnit_Framework_TestCase {
 		             ->with('na/v1.2/champion/10101', [
 						'api_key'    => 'key',
 		             ])->once()
-		             ->andReturn(new LeagueWrap\Response(file_get_contents('tests/Json/champion.json'), 404));
+		             ->andReturn(new JeffreyVdb\LeagueWrap\Response(file_get_contents('tests/Json/champion.json'), 404));
 
-		$api      = new LeagueWrap\Api('key', $this->client);
+		$api      = new JeffreyVdb\LeagueWrap\Api('key', $this->client);
 		$champion = $api->champion()
 		                ->remember(60, $this->cache);
 		try
 		{
 			$champion->championById(10101);
 		}
-		catch (LeagueWrap\Response\HttpClientError $exception)
+		catch (JeffreyVdb\LeagueWrap\Response\HttpClientError $exception)
 		{
 			$this->cache->shouldReceive('get')
 		            	->once()
@@ -105,7 +105,7 @@ class CacheTest extends PHPUnit_Framework_TestCase {
 		$this->client->shouldReceive('baseUrl')
 		             ->twice();
 
-		$api = new LeagueWrap\Api('key', $this->client);
+		$api = new JeffreyVdb\LeagueWrap\Api('key', $this->client);
 		$api->setCacheOnly()
 		    ->remember(60, $this->cache);
 		$champion = $api->champion();
@@ -115,7 +115,7 @@ class CacheTest extends PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @expectedException LeagueWrap\Exception\CacheNotFoundException
+	 * @expectedException JeffreyVdb\LeagueWrap\Exception\CacheNotFoundException
 	 */
 	public function testRememberSummonerCacheOnlyNoHit()
 	{
@@ -127,7 +127,7 @@ class CacheTest extends PHPUnit_Framework_TestCase {
 		$this->client->shouldReceive('baseUrl')
 		             ->once();
 
-		$api = new LeagueWrap\Api('key', $this->client);
+		$api = new JeffreyVdb\LeagueWrap\Api('key', $this->client);
 		$api->remember(null, $this->cache)
 		    ->setCacheOnly();
 		$summoner = $api->summoner()->info('bakasan');
@@ -157,7 +157,7 @@ class CacheTest extends PHPUnit_Framework_TestCase {
 		             ])->once()
 		             ->andReturn($bakasan);
 
-		LeagueWrap\StaticApi::mount();
+		JeffreyVdb\LeagueWrap\StaticApi::mount();
 		Api::setKey('key', $this->client);
 		Api::remember(10, $this->cache);
 		Summoner::info('bakasan');

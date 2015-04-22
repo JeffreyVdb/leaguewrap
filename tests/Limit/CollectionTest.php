@@ -1,7 +1,7 @@
 <?php
 
-use LeagueWrap\Limit\Limit;
-use LeagueWrap\Limit\Collection;
+use JeffreyVdb\LeagueWrap\Limit\Limit;
+use JeffreyVdb\LeagueWrap\Limit\Collection;
 
 class LimitCollectionTest extends PHPUnit_Framework_TestCase {
 

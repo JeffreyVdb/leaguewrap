@@ -8,8 +8,8 @@ class StaticProxyStaticGameTest extends PHPUnit_Framework_TestCase {
 
 	public function setUp()
 	{
-		$this->client = m::mock('LeagueWrap\Client');
-		LeagueWrap\StaticApi::mount();
+		$this->client = m::mock('JeffreyVdb\LeagueWrap\Client');
+		JeffreyVdb\LeagueWrap\StaticApi::mount();
 	}
 
 	public function tearDown()
@@ -29,7 +29,7 @@ class StaticProxyStaticGameTest extends PHPUnit_Framework_TestCase {
 
 		Api::setKey('key', $this->client);
 		$games = Game::recent(74602);
-		$this->assertTrue($games instanceof LeagueWrap\Dto\RecentGames);
+		$this->assertTrue($games instanceof JeffreyVdb\LeagueWrap\Dto\RecentGames);
 	}
 
 	public function testRecentSummoner()
@@ -50,7 +50,7 @@ class StaticProxyStaticGameTest extends PHPUnit_Framework_TestCase {
 		Api::setKey('key', $this->client);
 		$bakasan = Summoner::info('bakasan');
 		$games   = Game::recent($bakasan);
-		$this->assertTrue($bakasan->recentGame(0) instanceof LeagueWrap\Dto\Game);
+		$this->assertTrue($bakasan->recentGame(0) instanceof JeffreyVdb\LeagueWrap\Dto\Game);
 	}
 }
 

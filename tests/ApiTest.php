@@ -1,6 +1,6 @@
 <?php
 
-use LeagueWrap\Api;
+use JeffreyVdb\LeagueWrap\Api;
 use Mockery as m;
 
 class ApiTest extends PHPUnit_Framework_TestCase {
@@ -9,74 +9,74 @@ class ApiTest extends PHPUnit_Framework_TestCase {
 	{
 		$api      = new Api('key');
 		$champion = $api->champion();
-		$this->assertTrue($champion instanceof LeagueWrap\Api\Champion);
+		$this->assertTrue($champion instanceof JeffreyVdb\LeagueWrap\Api\Champion);
 	}
 
 	public function testSummoner()
 	{
 		$api      = new Api('key');
 		$summoner = $api->summoner();
-		$this->assertTrue($summoner instanceof LeagueWrap\Api\Summoner);
+		$this->assertTrue($summoner instanceof JeffreyVdb\LeagueWrap\Api\Summoner);
 	}
 
 	public function testGame()
 	{
 		$api  = new Api('key');
 		$game = $api->game();
-		$this->assertTrue($game instanceof LeagueWrap\Api\Game);
+		$this->assertTrue($game instanceof JeffreyVdb\LeagueWrap\Api\Game);
 	}
 
 	public function testLeague()
 	{
 		$api    = new Api('key');
 		$league = $api->league();
-		$this->assertTrue($league instanceof LeagueWrap\Api\League);
+		$this->assertTrue($league instanceof JeffreyVdb\LeagueWrap\Api\League);
 	}
 
 	public function testStats()
 	{
 		$api   = new Api('key');
 		$stats = $api->stats();
-		$this->assertTrue($stats instanceof LeagueWrap\Api\Stats);
+		$this->assertTrue($stats instanceof JeffreyVdb\LeagueWrap\Api\Stats);
 	}
 
 	public function testTeam()
 	{
 		$api  = new Api('key');
 		$team = $api->team();
-		$this->assertTrue($team instanceof LeagueWrap\Api\Team);
+		$this->assertTrue($team instanceof JeffreyVdb\LeagueWrap\Api\Team);
 	}
 
 	public function testStaticData()
 	{
 		$api        = new Api('key');
 		$staticData = $api->staticData();
-		$this->assertTrue($staticData instanceof LeagueWrap\Api\Staticdata);
+		$this->assertTrue($staticData instanceof JeffreyVdb\LeagueWrap\Api\Staticdata);
 	}
 
     public function testMatchHistory()
     {
         $api = new Api('key');
         $matchhistory = $api->matchHistory();
-        $this->assertTrue($matchhistory instanceof LeagueWrap\Api\MatchHistory);
+        $this->assertTrue($matchhistory instanceof JeffreyVdb\LeagueWrap\Api\MatchHistory);
     }
 
     public function testMatch()
     {
         $api = new Api('key');
         $match = $api->match();
-        $this->assertTrue($match instanceof LeagueWrap\Api\Match);
+        $this->assertTrue($match instanceof JeffreyVdb\LeagueWrap\Api\Match);
     }
 
 	public function testCurrentGame()
 	{
 		$api = new Api('key');
 		$currentGame = $api->currentGame();
-		$this->assertTrue($currentGame instanceof LeagueWrap\Api\CurrentGame);
+		$this->assertTrue($currentGame instanceof JeffreyVdb\LeagueWrap\Api\CurrentGame);
 	}
 
 	/**
-	 * @expectedException LeagueWrap\Exception\NoKeyException
+	 * @expectedException JeffreyVdb\LeagueWrap\Exception\NoKeyException
 	 */
 	public function testNoKeyException()
 	{
@@ -84,7 +84,7 @@ class ApiTest extends PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @expectedException LeagueWrap\Exception\ApiClassNotFoundException
+	 * @expectedException JeffreyVdb\LeagueWrap\Exception\ApiClassNotFoundException
 	 */
 	public function testApiClassNotFoundException()
 	{

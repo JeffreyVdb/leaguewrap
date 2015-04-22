@@ -1,6 +1,6 @@
 <?php
 
-use LeagueWrap\Api;
+use JeffreyVdb\LeagueWrap\Api;
 use Mockery as m;
 
 class CurrentGameTest extends PHPUnit_Framework_TestCase
@@ -10,7 +10,7 @@ class CurrentGameTest extends PHPUnit_Framework_TestCase
 
 	public function setUp()
 	{
-		$client       = m::mock('LeagueWrap\Client');
+		$client       = m::mock('JeffreyVdb\LeagueWrap\Client');
 		$this->client = $client;
 	}
 
@@ -32,7 +32,7 @@ class CurrentGameTest extends PHPUnit_Framework_TestCase
 		$api = new Api('key', $this->client);
 		$api->setRegion('euw');
 		$game = $api->currentGame()->currentGame(30447079);
-		$this->assertTrue($game instanceof LeagueWrap\Dto\CurrentGame);
+		$this->assertTrue($game instanceof JeffreyVdb\LeagueWrap\Dto\CurrentGame);
 	}
 
 	public function testCurrentGameGetBan()
@@ -50,7 +50,7 @@ class CurrentGameTest extends PHPUnit_Framework_TestCase
 		$game = $api->currentGame()->currentGame(30447079);
 
 		$ban = $game->ban(1);
-		$this->assertTrue($ban instanceof \LeagueWrap\Dto\Ban);
+		$this->assertTrue($ban instanceof \JeffreyVdb\LeagueWrap\Dto\Ban);
 		$this->assertTrue($ban->teamId == 100);
 		$this->assertTrue($ban->championId == 59);
 
@@ -72,7 +72,7 @@ class CurrentGameTest extends PHPUnit_Framework_TestCase
 		$api->setRegion('euw');
 		$game = $api->currentGame()->currentGame(30447079);
 
-		$this->assertTrue($game->observers instanceof \LeagueWrap\Dto\Observer);
+		$this->assertTrue($game->observers instanceof \JeffreyVdb\LeagueWrap\Dto\Observer);
 		$this->assertTrue($game->observers->encryptionKey == "02PHNRQw/YzBA35fF/LMVao8ui8A7pnz");
 	}
 
@@ -90,7 +90,7 @@ class CurrentGameTest extends PHPUnit_Framework_TestCase
 		$api->setRegion('euw');
 		$game = $api->currentGame()->currentGame(30447079);
 
-		$this->assertTrue($game->participant(30447079) instanceof \LeagueWrap\Dto\CurrentGameParticipant);
+		$this->assertTrue($game->participant(30447079) instanceof \JeffreyVdb\LeagueWrap\Dto\CurrentGameParticipant);
 	}
 
 	public function testCurrentGameParticipantMasteries()
@@ -108,7 +108,7 @@ class CurrentGameTest extends PHPUnit_Framework_TestCase
 		$game = $api->currentGame()->currentGame(30447079);
 
 		$participant = $game->participant(28882300);
-		$this->assertTrue($participant->mastery(4132) instanceof \LeagueWrap\Dto\Mastery);
+		$this->assertTrue($participant->mastery(4132) instanceof \JeffreyVdb\LeagueWrap\Dto\Mastery);
 		$this->assertTrue($participant->mastery(4132)->rank == 1);
 	}
 
@@ -127,7 +127,7 @@ class CurrentGameTest extends PHPUnit_Framework_TestCase
 		$game = $api->currentGame()->currentGame(30447079);
 
 		$participant = $game->participant(28882300);
-		$this->assertTrue($participant->rune(5253) instanceof \LeagueWrap\Dto\Rune);
+		$this->assertTrue($participant->rune(5253) instanceof \JeffreyVdb\LeagueWrap\Dto\Rune);
 		$this->assertTrue($participant->rune(5253)->count == 9);
 	}
 }

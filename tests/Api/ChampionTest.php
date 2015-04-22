@@ -1,6 +1,6 @@
 <?php
 
-use LeagueWrap\Api;
+use JeffreyVdb\LeagueWrap\Api;
 use Mockery as m;
 
 class ApiChampionTest extends PHPUnit_Framework_TestCase {
@@ -9,7 +9,7 @@ class ApiChampionTest extends PHPUnit_Framework_TestCase {
 
 	public function setUp()
 	{
-		$client       = m::mock('LeagueWrap\Client');
+		$client       = m::mock('JeffreyVdb\LeagueWrap\Client');
 		$this->client = $client;
 	}
 
@@ -27,12 +27,12 @@ class ApiChampionTest extends PHPUnit_Framework_TestCase {
 						'freeToPlay' => 'false',
 						'api_key'    => 'key',
 		             ])->once()
-		             ->andReturn(new LeagueWrap\Response(file_get_contents('tests/Json/champion.json'), 200));
+		             ->andReturn(new JeffreyVdb\LeagueWrap\Response(file_get_contents('tests/Json/champion.json'), 200));
 
 		$api       = new Api('key', $this->client);
 		$champion  = $api->champion();
 		$champions = $champion->all();
-		$this->assertTrue($champions->getChampion(53) instanceof LeagueWrap\Dto\Champion);
+		$this->assertTrue($champions->getChampion(53) instanceof JeffreyVdb\LeagueWrap\Dto\Champion);
 	}
 
 	public function testAllArrayAccess()
@@ -49,7 +49,7 @@ class ApiChampionTest extends PHPUnit_Framework_TestCase {
 		$api       = new Api('key', $this->client);
 		$champion  = $api->champion();
 		$champions = $champion->all();
-		$this->assertTrue($champions[53] instanceof LeagueWrap\Dto\Champion);
+		$this->assertTrue($champions[53] instanceof JeffreyVdb\LeagueWrap\Dto\Champion);
 	}
 
 	public function testFreeWillNotBeStoredPermanently() 
@@ -175,7 +175,7 @@ class ApiChampionTest extends PHPUnit_Framework_TestCase {
 		$api->setRegion('kr');
 		$champion  = $api->champion();
 		$champions = $champion->all();
-		$this->assertTrue($champions->getChampion(53) instanceof LeagueWrap\Dto\Champion);
+		$this->assertTrue($champions->getChampion(53) instanceof JeffreyVdb\LeagueWrap\Dto\Champion);
 	}
 
 	public function testAllRegionRU()
@@ -194,11 +194,11 @@ class ApiChampionTest extends PHPUnit_Framework_TestCase {
 		$api->setRegion('RU');
 		$champion  = $api->champion();
 		$champions = $champion->all();
-		$this->assertTrue($champions->getChampion(53) instanceof LeagueWrap\Dto\Champion);
+		$this->assertTrue($champions->getChampion(53) instanceof JeffreyVdb\LeagueWrap\Dto\Champion);
 	}
 
 	/**
-	 * @expectedException LeagueWrap\Response\Http400
+	 * @expectedException JeffreyVdb\LeagueWrap\Response\Http400
 	 * @expectedExceptionMessage Bad request.
 	 */
 	public function testAllBadRquest()
@@ -210,7 +210,7 @@ class ApiChampionTest extends PHPUnit_Framework_TestCase {
 						'freeToPlay' => 'false',
 						'api_key'    => 'key',
 		             ])->once()
-		             ->andReturn(new LeagueWrap\Response('', 400));
+		             ->andReturn(new JeffreyVdb\LeagueWrap\Response('', 400));
 
 		$api       = new Api('key', $this->client);
 		$champion  = $api->champion();

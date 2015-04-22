@@ -1,6 +1,6 @@
 <?php
 
-use LeagueWrap\Api;
+use JeffreyVdb\LeagueWrap\Api;
 use Mockery as m;
 
 class ApiSummonerTest extends PHPUnit_Framework_TestCase {
@@ -9,7 +9,7 @@ class ApiSummonerTest extends PHPUnit_Framework_TestCase {
 
 	public function setUp()
 	{
-		$client       = m::mock('LeagueWrap\Client');
+		$client       = m::mock('JeffreyVdb\LeagueWrap\Client');
 		$this->client = $client;
 	}
 
@@ -114,7 +114,7 @@ class ApiSummonerTest extends PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @expectedException LeagueWrap\Exception\ListMaxException
+	 * @expectedException JeffreyVdb\LeagueWrap\Exception\ListMaxException
 	 */
 	public function testInfoToManyIds()
 	{
@@ -129,7 +129,7 @@ class ApiSummonerTest extends PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @expectedException LeagueWrap\Exception\ListMaxException
+	 * @expectedException JeffreyVdb\LeagueWrap\Exception\ListMaxException
 	 */
 	public function testInfoToManyNames()
 	{
@@ -189,7 +189,7 @@ class ApiSummonerTest extends PHPUnit_Framework_TestCase {
 
 		$api   = new Api('key', $this->client);
 		$runes = $api->summoner()->runePages(74602);
-		$this->assertTrue($runes[0] instanceof LeagueWrap\Dto\RunePage);
+		$this->assertTrue($runes[0] instanceof JeffreyVdb\LeagueWrap\Dto\RunePage);
 	}
 
 	public function testRuneArrayAccess()
@@ -204,7 +204,7 @@ class ApiSummonerTest extends PHPUnit_Framework_TestCase {
 
 		$api   = new Api('key', $this->client);
 		$runes = $api->summoner()->runePages(74602);
-		$this->assertTrue($runes[0][30] instanceof LeagueWrap\Dto\Rune);
+		$this->assertTrue($runes[0][30] instanceof JeffreyVdb\LeagueWrap\Dto\Rune);
 	}
 
 	public function testRunesSummoner()
@@ -264,7 +264,7 @@ class ApiSummonerTest extends PHPUnit_Framework_TestCase {
 
 		$api       = new Api('key', $this->client);
 		$masteries = $api->summoner()->masteryPages(74602);
-		$this->assertTrue($masteries[0] instanceof LeagueWrap\Dto\MasteryPage);
+		$this->assertTrue($masteries[0] instanceof JeffreyVdb\LeagueWrap\Dto\MasteryPage);
 	}
 
 	public function testMasteriesArrayAccess()
@@ -279,7 +279,7 @@ class ApiSummonerTest extends PHPUnit_Framework_TestCase {
 
 		$api       = new Api('key', $this->client);
 		$masteries = $api->summoner()->masteryPages(74602);
-		$this->assertTrue($masteries[0][4342] instanceof LeagueWrap\Dto\Mastery);
+		$this->assertTrue($masteries[0][4342] instanceof JeffreyVdb\LeagueWrap\Dto\Mastery);
 	}
 
 	public function testMasteriesArrayOnlyOneMasterySummoner()
@@ -364,12 +364,12 @@ class ApiSummonerTest extends PHPUnit_Framework_TestCase {
 
 		$api      = new API('key', $this->client);
 		$summoner = $api->summoner()->allInfo(74602);
-		$this->assertTrue($summoner->masteryPages[0] instanceof LeagueWrap\Dto\MasteryPage);
-		$this->assertTrue($summoner->runePages[0] instanceof LeagueWrap\Dto\RunePage);
+		$this->assertTrue($summoner->masteryPages[0] instanceof JeffreyVdb\LeagueWrap\Dto\MasteryPage);
+		$this->assertTrue($summoner->runePages[0] instanceof JeffreyVdb\LeagueWrap\Dto\RunePage);
 	}
 
 	/**
-	 * @expectedException LeagueWrap\Response\Http404
+	 * @expectedException JeffreyVdb\LeagueWrap\Response\Http404
 	 */
 	public function testInfoSummonerNotFound()
 	{
@@ -379,7 +379,7 @@ class ApiSummonerTest extends PHPUnit_Framework_TestCase {
 		             ->with('na/v1.4/summoner/by-name/bakasan', [
 						'api_key' => 'key',
 		             ])->once()
-		             ->andReturn(new LeagueWrap\Response('', 404));
+		             ->andReturn(new JeffreyVdb\LeagueWrap\Response('', 404));
 
 		$api     = new Api('key', $this->client);
 		$bakasan = $api->summoner()->info('bakasan');

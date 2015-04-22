@@ -4,7 +4,7 @@ class DtoMasteryPageTest extends PHPUnit_Framework_TestCase {
 
 	public function testMastery()
 	{
-		$masteryPage = new LeagueWrap\Dto\MasteryPage([
+		$masteryPage = new JeffreyVdb\LeagueWrap\Dto\MasteryPage([
 			'masteries' => [
 				1 => 'mastery1',
 				2 => 'mastery2',
@@ -18,7 +18,7 @@ class DtoMasteryPageTest extends PHPUnit_Framework_TestCase {
 
 	public function testMasteryNotFound()
 	{
-		$masteryPage = new LeagueWrap\Dto\MasteryPage([
+		$masteryPage = new JeffreyVdb\LeagueWrap\Dto\MasteryPage([
 			'masteries' => [
 				1 => 'mastery1',
 				2 => 'mastery2',
@@ -32,7 +32,7 @@ class DtoMasteryPageTest extends PHPUnit_Framework_TestCase {
 
 	public function testNoMasteryProperty()
 	{
-		$masteryPage = new LeagueWrap\Dto\MasteryPage([]);
+		$masteryPage = new JeffreyVdb\LeagueWrap\Dto\MasteryPage([]);
 
 		$mastery = $masteryPage->mastery(1);
 		$this->assertTrue(is_null($mastery));

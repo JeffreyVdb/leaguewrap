@@ -8,8 +8,8 @@ class StaticProxyStaticTeamTest extends PHPUnit_Framework_TestCase {
 
 	public function setUp()
 	{
-		$this->client = m::mock('LeagueWrap\Client');
-		LeagueWrap\StaticApi::mount();
+		$this->client = m::mock('JeffreyVdb\LeagueWrap\Client');
+		JeffreyVdb\LeagueWrap\StaticApi::mount();
 	}
 
 	public function tearDown()
@@ -33,7 +33,7 @@ class StaticProxyStaticTeamTest extends PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @expectedException LeagueWrap\Exception\ListMaxException
+	 * @expectedException JeffreyVdb\LeagueWrap\Exception\ListMaxException
 	 */
 	public function testTeamListMaxException()
 	{

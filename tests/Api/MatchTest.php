@@ -1,7 +1,7 @@
 <?php
 
-use LeagueWrap\Api;
-use LeagueWrap\Dto\MatchTimeline;
+use JeffreyVdb\LeagueWrap\Api;
+use JeffreyVdb\LeagueWrap\Dto\MatchTimeline;
 use Mockery as m;
 
 class ApiMatchTest extends PHPUnit_Framework_TestCase {
@@ -10,7 +10,7 @@ class ApiMatchTest extends PHPUnit_Framework_TestCase {
 
 	public function setUp()
 	{
-		$client		  = m::mock('LeagueWrap\Client');
+		$client		  = m::mock('JeffreyVdb\LeagueWrap\Client');
 		$this->client = $client;
 	}
 
@@ -31,7 +31,7 @@ class ApiMatchTest extends PHPUnit_Framework_TestCase {
 
 		$api   = new Api('key', $this->client);
 		$match = $api->match()->match(1399898747);
-		$this->assertTrue($match instanceof LeagueWrap\Dto\Match);
+		$this->assertTrue($match instanceof JeffreyVdb\LeagueWrap\Dto\Match);
 	}
 
 	public function testMatchWithStatic()
@@ -79,7 +79,7 @@ class ApiMatchTest extends PHPUnit_Framework_TestCase {
 
 		$api   = new Api('key', $this->client);
 		$match = $api->match()->match(1399898747);
-		$this->assertTrue($match->team(0) instanceof LeagueWrap\Dto\MatchTeam);
+		$this->assertTrue($match->team(0) instanceof JeffreyVdb\LeagueWrap\Dto\MatchTeam);
 	}
 
 	public function testBans()
@@ -94,7 +94,7 @@ class ApiMatchTest extends PHPUnit_Framework_TestCase {
 
 		$api   = new Api('key', $this->client);
 		$match = $api->match()->match(1399898747);
-		$this->assertTrue($match->team(0)->ban(0) instanceof LeagueWrap\Dto\Ban);
+		$this->assertTrue($match->team(0)->ban(0) instanceof JeffreyVdb\LeagueWrap\Dto\Ban);
 	}
 
 	public function testIncludeTimeline()
@@ -110,7 +110,7 @@ class ApiMatchTest extends PHPUnit_Framework_TestCase {
 
 		$api   = new Api('key', $this->client);
 		$match = $api->match()->match(1399898747, true);
-		$this->assertTrue($match instanceof LeagueWrap\Dto\Match);
+		$this->assertTrue($match instanceof JeffreyVdb\LeagueWrap\Dto\Match);
 	}
 
 	public function testTimeline()
@@ -144,8 +144,8 @@ class ApiMatchTest extends PHPUnit_Framework_TestCase {
 		$match = $api->match()->match(1399898747, true);
 
 		$frame = $match->timeline->frames[1];
-		$this->assertTrue($frame instanceof LeagueWrap\Dto\TimelineFrame);
-		$this->assertTrue($frame->participantFrame(1) instanceof LeagueWrap\Dto\TimelineParticipantFrame);
-		$this->assertTrue($frame->events[0] instanceof LeagueWrap\Dto\TimelineFrameEvent);
+		$this->assertTrue($frame instanceof JeffreyVdb\LeagueWrap\Dto\TimelineFrame);
+		$this->assertTrue($frame->participantFrame(1) instanceof JeffreyVdb\LeagueWrap\Dto\TimelineParticipantFrame);
+		$this->assertTrue($frame->events[0] instanceof JeffreyVdb\LeagueWrap\Dto\TimelineFrameEvent);
 	}
 } 

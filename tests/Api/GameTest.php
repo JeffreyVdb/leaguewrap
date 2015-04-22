@@ -1,6 +1,6 @@
 <?php
 
-use LeagueWrap\Api;
+use JeffreyVdb\LeagueWrap\Api;
 use Mockery as m;
 
 class ApiGameTest extends PHPUnit_Framework_TestCase {
@@ -9,7 +9,7 @@ class ApiGameTest extends PHPUnit_Framework_TestCase {
 
 	public function setUp()
 	{
-		$client       = m::mock('LeagueWrap\Client');
+		$client       = m::mock('JeffreyVdb\LeagueWrap\Client');
 		$this->client = $client;
 	}
 
@@ -30,7 +30,7 @@ class ApiGameTest extends PHPUnit_Framework_TestCase {
 
 		$api   = new Api('key', $this->client);
 		$games = $api->game()->recent(74602);
-		$this->assertTrue($games instanceof LeagueWrap\Dto\RecentGames);
+		$this->assertTrue($games instanceof JeffreyVdb\LeagueWrap\Dto\RecentGames);
 	}
 
 	public function testRecentArrayAccess()
@@ -45,7 +45,7 @@ class ApiGameTest extends PHPUnit_Framework_TestCase {
 
 		$api   = new Api('key', $this->client);
 		$games = $api->game()->recent(74602);
-		$this->assertTrue($games[0] instanceof LeagueWrap\Dto\Game);
+		$this->assertTrue($games[0] instanceof JeffreyVdb\LeagueWrap\Dto\Game);
 	}
 
 	public function testRecentSummoner()
@@ -66,7 +66,7 @@ class ApiGameTest extends PHPUnit_Framework_TestCase {
 		$api     = new Api('key', $this->client);
 		$bakasan = $api->summoner()->info('bakasan');
 		$games   = $api->game()->recent($bakasan);
-		$this->assertTrue($bakasan->recentGame(0) instanceof LeagueWrap\Dto\Game);
+		$this->assertTrue($bakasan->recentGame(0) instanceof JeffreyVdb\LeagueWrap\Dto\Game);
 	}
 
 	public function testRecentStatsSummoner()

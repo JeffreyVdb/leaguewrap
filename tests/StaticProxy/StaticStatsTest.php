@@ -8,8 +8,8 @@ class StaticProxyStaticStatsTest extends PHPUnit_Framework_TestCase {
 
 	public function setUp()
 	{
-		$this->client = m::mock('LeagueWrap\Client');
-		LeagueWrap\StaticApi::mount();
+		$this->client = m::mock('JeffreyVdb\LeagueWrap\Client');
+		JeffreyVdb\LeagueWrap\StaticApi::mount();
 	}
 
 	public function tearDown()
@@ -29,7 +29,7 @@ class StaticProxyStaticStatsTest extends PHPUnit_Framework_TestCase {
 
 		Api::setKey('key', $this->client);
 		$stats = Stats::summary(74602);
-		$this->assertTrue($stats instanceof LeagueWrap\Dto\PlayerStatsSummaryList);
+		$this->assertTrue($stats instanceof JeffreyVdb\LeagueWrap\Dto\PlayerStatsSummaryList);
 	}
 
 	public function testRanked()
@@ -44,7 +44,7 @@ class StaticProxyStaticStatsTest extends PHPUnit_Framework_TestCase {
 
 		Api::setKey('key', $this->client);
 		$stats = Stats::ranked(74602);
-		$this->assertTrue($stats->champion(0) instanceof LeagueWrap\Dto\ChampionStats);
+		$this->assertTrue($stats->champion(0) instanceof JeffreyVdb\LeagueWrap\Dto\ChampionStats);
 	}
 }
 

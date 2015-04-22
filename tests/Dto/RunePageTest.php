@@ -4,7 +4,7 @@ class DtoRunePageTest extends PHPUnit_Framework_TestCase {
 
 	public function testRune()
 	{
-		$runePage = new LeagueWrap\Dto\RunePage([
+		$runePage = new JeffreyVdb\LeagueWrap\Dto\RunePage([
 			'runes' => [
 				1 => 'rune1',
 				2 => 'rune2',
@@ -18,7 +18,7 @@ class DtoRunePageTest extends PHPUnit_Framework_TestCase {
 
 	public function testRuneNotFound()
 	{
-		$runePage = new LeagueWrap\Dto\RunePage([
+		$runePage = new JeffreyVdb\LeagueWrap\Dto\RunePage([
 			'runes' => [
 				1 => 'rune1',
 				2 => 'rune2',
@@ -32,7 +32,7 @@ class DtoRunePageTest extends PHPUnit_Framework_TestCase {
 
 	public function testNoRuneProperty()
 	{
-		$runePage = new LeagueWrap\Dto\RunePage([]);
+		$runePage = new JeffreyVdb\LeagueWrap\Dto\RunePage([]);
 
 		$rune = $runePage->rune(1);
 		$this->assertTrue(is_null($rune));

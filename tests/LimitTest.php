@@ -10,9 +10,9 @@ class LimitTest extends PHPUnit_Framework_TestCase {
 
 	public function setUp()
 	{
-		$this->limit1 = m::mock('LeagueWrap\LimitInterface');
-		$this->limit2 = m::mock('LeagueWrap\LimitInterface');
-		$this->client = m::mock('LeagueWrap\Client');
+		$this->limit1 = m::mock('JeffreyVdb\LeagueWrap\LimitInterface');
+		$this->limit2 = m::mock('JeffreyVdb\LeagueWrap\LimitInterface');
+		$this->client = m::mock('JeffreyVdb\LeagueWrap\Client');
 	}
 
 	public function tearDown()
@@ -21,7 +21,7 @@ class LimitTest extends PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @expectedException LeagueWrap\Exception\LimitReachedException
+	 * @expectedException JeffreyVdb\LeagueWrap\Exception\LimitReachedException
 	 */
 	public function testSingleLimit()
 	{
@@ -48,7 +48,7 @@ class LimitTest extends PHPUnit_Framework_TestCase {
 		             ])->once()
 		             ->andReturn(file_get_contents('tests/Json/champion.free.json'));
 
-		$api = new LeagueWrap\Api('key', $this->client);
+		$api = new JeffreyVdb\LeagueWrap\Api('key', $this->client);
 		$api->limit(1, 10, 'na', $this->limit1);
 		$champion = $api->champion();
 		$champion->free();
@@ -56,7 +56,7 @@ class LimitTest extends PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @expectedException LeagueWrap\Exception\LimitReachedException
+	 * @expectedException JeffreyVdb\LeagueWrap\Exception\LimitReachedException
 	 */
 	public function testSingleFileLimit()
 	{
@@ -72,7 +72,7 @@ class LimitTest extends PHPUnit_Framework_TestCase {
 		             ])->once()
 		             ->andReturn(file_get_contents('tests/Json/champion.free.json'));
 
-		$api = new LeagueWrap\Api('key', $this->client);
+		$api = new JeffreyVdb\LeagueWrap\Api('key', $this->client);
 		$api->limit(1, 10, 'na', $this->limit1);
 		$champion = $api->champion();
 		$champion->free();
@@ -80,7 +80,7 @@ class LimitTest extends PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @expectedException LeagueWrap\Exception\LimitReachedException
+	 * @expectedException JeffreyVdb\LeagueWrap\Exception\LimitReachedException
 	 */
 	public function testSingleLimitStaticProxy()
 	{
@@ -106,7 +106,7 @@ class LimitTest extends PHPUnit_Framework_TestCase {
 		             ])->once()
 		             ->andReturn(file_get_contents('tests/Json/summoner.bakasan.json'));
 
-		LeagueWrap\StaticApi::mount();
+		JeffreyVdb\LeagueWrap\StaticApi::mount();
 		Api::setKey('key', $this->client);
 		Api::limit(1, 10, 'na', $this->limit1);
 		Summoner::info('bakasan');
@@ -114,7 +114,7 @@ class LimitTest extends PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @expectedException LeagueWrap\Exception\LimitReachedException
+	 * @expectedException JeffreyVdb\LeagueWrap\Exception\LimitReachedException
 	 */
 	public function testDoubleLimit()
 	{
@@ -155,7 +155,7 @@ class LimitTest extends PHPUnit_Framework_TestCase {
 		             ])->twice()
 		             ->andReturn(file_get_contents('tests/Json/champion.free.json'));
 
-		$api = new LeagueWrap\Api('key', $this->client);
+		$api = new JeffreyVdb\LeagueWrap\Api('key', $this->client);
 		$api->limit(5, 10, 'na', $this->limit1);
 		$api->limit(2, 5, 'na', $this->limit2);
 		$champion = $api->champion();
@@ -228,7 +228,7 @@ class LimitTest extends PHPUnit_Framework_TestCase {
 		             ])->once()
 		             ->andReturn(file_get_contents('tests/Json/champion.free.json'));
 
-		$api = new LeagueWrap\Api('key', $this->client);
+		$api = new JeffreyVdb\LeagueWrap\Api('key', $this->client);
 		$api->limit(10, 5, 'all', $this->limit1);
 		$champion = $api->champion();
 		$info = $champion->free();

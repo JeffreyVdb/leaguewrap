@@ -1,6 +1,6 @@
 <?php
 
-use LeagueWrap\Limit\Limit;
+use JeffreyVdb\LeagueWrap\Limit\Limit;
 
 class LimitLimitTest extends PHPUnit_Framework_TestCase {
 

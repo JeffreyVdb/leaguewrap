@@ -8,8 +8,8 @@ class StaticProxyStaticLeagueTest extends PHPUnit_Framework_TestCase {
 
 	public function setUp()
 	{
-		$this->client = m::mock('LeagueWrap\Client');
-		LeagueWrap\StaticApi::mount();
+		$this->client = m::mock('JeffreyVdb\LeagueWrap\Client');
+		JeffreyVdb\LeagueWrap\StaticApi::mount();
 	}
 
 	public function tearDown()
@@ -29,6 +29,6 @@ class StaticProxyStaticLeagueTest extends PHPUnit_Framework_TestCase {
 
 		Api::setKey('key', $this->client);
 		$leagues = League::league(272354);
-		$this->assertTrue($leagues[0] instanceof LeagueWrap\Dto\League);
+		$this->assertTrue($leagues[0] instanceof JeffreyVdb\LeagueWrap\Dto\League);
 	}
 }

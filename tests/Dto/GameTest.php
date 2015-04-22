@@ -4,7 +4,7 @@ class DtoGameTest extends PHPUnit_Framework_TestCase {
 
 	public function testPlayer()
 	{
-		$game = new LeagueWrap\Dto\Game([
+		$game = new JeffreyVdb\LeagueWrap\Dto\Game([
 			'fellowPlayers' => [
 				123 => [
 					'name' => 'fellowPlayer1',
@@ -24,7 +24,7 @@ class DtoGameTest extends PHPUnit_Framework_TestCase {
 
 	public function testPlayerNotFound()
 	{
-		$game = new LeagueWrap\Dto\Game([
+		$game = new JeffreyVdb\LeagueWrap\Dto\Game([
 			'fellowPlayers' => [
 				123 => [
 					'name' => 'fellowPlayer1',
@@ -44,7 +44,7 @@ class DtoGameTest extends PHPUnit_Framework_TestCase {
 
 	public function testNoPlayerProperty()
 	{
-		$game = new LeagueWrap\Dto\Game([]);
+		$game = new JeffreyVdb\LeagueWrap\Dto\Game([]);
 
 		$player = $game->player(1);
 		$this->assertTrue(is_null($player));

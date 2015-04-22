@@ -1,6 +1,6 @@
 <?php
 
-use LeagueWrap\Region;
+use JeffreyVdb\LeagueWrap\Region;
 
 class RegionTest extends PHPUnit_Framework_TestCase {
 	

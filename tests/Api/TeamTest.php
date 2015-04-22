@@ -1,6 +1,6 @@
 <?php
 
-use LeagueWrap\Api;
+use JeffreyVdb\LeagueWrap\Api;
 use Mockery as m;
 
 class ApiTeamTest extends PHPUnit_Framework_TestCase {
@@ -9,7 +9,7 @@ class ApiTeamTest extends PHPUnit_Framework_TestCase {
 
 	public function setUp()
 	{
-		$client       = m::mock('LeagueWrap\Client');
+		$client       = m::mock('JeffreyVdb\LeagueWrap\Client');
 		$this->client = $client;
 	}
 
@@ -34,7 +34,7 @@ class ApiTeamTest extends PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @expectedException LeagueWrap\Exception\ListMaxException
+	 * @expectedException JeffreyVdb\LeagueWrap\Exception\ListMaxException
 	 */
 	public function testTeamListMaxException()
 	{
@@ -58,7 +58,7 @@ class ApiTeamTest extends PHPUnit_Framework_TestCase {
 		$api   = new Api('key', $this->client);
 		$teams = $api->team()->team(492066);
 		$c9    = $teams['TEAM-9baaf74e-ea61-4ebc-82d9-b013d29399fa'];
-		$this->assertTrue($c9[0] instanceof LeagueWrap\Dto\Team\Match);
+		$this->assertTrue($c9[0] instanceof JeffreyVdb\LeagueWrap\Dto\Team\Match);
 	}
 
 	public function testTeamRosterArrayAccess()
@@ -74,7 +74,7 @@ class ApiTeamTest extends PHPUnit_Framework_TestCase {
 		$api   = new Api('key', $this->client);
 		$teams = $api->team()->team(492066);
 		$c9    = $teams['TEAM-9baaf74e-ea61-4ebc-82d9-b013d29399fa'];
-		$this->assertTrue($c9->roster[19302712] instanceof LeagueWrap\Dto\Team\Member);
+		$this->assertTrue($c9->roster[19302712] instanceof JeffreyVdb\LeagueWrap\Dto\Team\Member);
 	}
 
 	public function testTeamSummoner()
@@ -95,7 +95,7 @@ class ApiTeamTest extends PHPUnit_Framework_TestCase {
 		$api = new Api('key', $this->client);
 		$hai = $api->summoner()->info('C9 Hai');
 		$api->team()->team($hai);
-		$this->assertTrue($hai->teams['TEAM-9baaf74e-ea61-4ebc-82d9-b013d29399fa'] instanceof LeagueWrap\Dto\Team);
+		$this->assertTrue($hai->teams['TEAM-9baaf74e-ea61-4ebc-82d9-b013d29399fa'] instanceof JeffreyVdb\LeagueWrap\Dto\Team);
 	}
 
 	public function testTeamSummonerMember()
@@ -134,7 +134,7 @@ class ApiTeamTest extends PHPUnit_Framework_TestCase {
 			18991200,
 			492066,
 		]);
-		$this->assertTrue($teams[18991200]['TEAM-00e058f0-bb04-46c5-bac1-07cebcc1cef1'] instanceof LeagueWrap\Dto\Team);
+		$this->assertTrue($teams[18991200]['TEAM-00e058f0-bb04-46c5-bac1-07cebcc1cef1'] instanceof JeffreyVdb\LeagueWrap\Dto\Team);
 	}
 
 	public function testTeamSummonerMultiple()

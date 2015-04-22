@@ -1,6 +1,6 @@
 <?php
 
-use LeagueWrap\Api;
+use JeffreyVdb\LeagueWrap\Api;
 use Mockery as m;
 
 class ApiMatchHistoryTest extends PHPUnit_Framework_TestCase {
@@ -9,7 +9,7 @@ class ApiMatchHistoryTest extends PHPUnit_Framework_TestCase {
 
     public function setUp()
     {
-        $client       = m::mock('LeagueWrap\Client');
+        $client       = m::mock('JeffreyVdb\LeagueWrap\Client');
         $this->client = $client;
     }
 
@@ -30,7 +30,7 @@ class ApiMatchHistoryTest extends PHPUnit_Framework_TestCase {
 
         $api   = new Api('key', $this->client);
         $matches = $api->matchHistory()->history(74602);
-        $this->assertTrue($matches instanceof LeagueWrap\Dto\MatchHistory);
+        $this->assertTrue($matches instanceof JeffreyVdb\LeagueWrap\Dto\MatchHistory);
     }
 
     public function testMatchHistoryArrayAccess()
@@ -45,7 +45,7 @@ class ApiMatchHistoryTest extends PHPUnit_Framework_TestCase {
 
         $api   = new Api('key', $this->client);
         $matches = $api->matchHistory()->history(74602);
-        $this->assertTrue($matches->match(0) instanceof LeagueWrap\Dto\Match);
+        $this->assertTrue($matches->match(0) instanceof JeffreyVdb\LeagueWrap\Dto\Match);
     }
 
     public function testHistorySummoner()
@@ -66,7 +66,7 @@ class ApiMatchHistoryTest extends PHPUnit_Framework_TestCase {
         $api     = new Api('key', $this->client);
         $bakasan = $api->summoner()->info('bakasan');
         $matches = $api->matchHistory()->history($bakasan);;
-        $this->assertTrue($bakasan->matchhistory->match(0) instanceof LeagueWrap\Dto\Match);
+        $this->assertTrue($bakasan->matchhistory->match(0) instanceof JeffreyVdb\LeagueWrap\Dto\Match);
     }
 
     public function testHistoryWithParams()
@@ -85,7 +85,7 @@ class ApiMatchHistoryTest extends PHPUnit_Framework_TestCase {
 
         $api   = new Api('key', $this->client);
         $matches = $api->matchHistory()->history(74602, 'RANKED_SOLO_5x5', [1,2,3], 1, 4);
-        $this->assertTrue($matches->match(0) instanceof LeagueWrap\Dto\Match);
+        $this->assertTrue($matches->match(0) instanceof JeffreyVdb\LeagueWrap\Dto\Match);
     }
 
 
@@ -151,7 +151,7 @@ class ApiMatchHistoryTest extends PHPUnit_Framework_TestCase {
 
     public function testParseParams()
     {
-        $class = new ReflectionClass('LeagueWrap\Api\Matchhistory');
+        $class = new ReflectionClass('JeffreyVdb\LeagueWrap\Api\Matchhistory');
         $method = $class->getMethod('parseParams');
         $method->setAccessible(true);
 

@@ -17,7 +17,7 @@ class ClientTest extends PHPUnit_Framework_TestCase {
 			$response,
 		]);
 
-		$client = new LeagueWrap\Client;
+		$client = new JeffreyVdb\LeagueWrap\Client;
 		$client->baseUrl('http://google.com');
 		$client->setTimeout(10);
 		$client->addMock($mock);
@@ -26,11 +26,11 @@ class ClientTest extends PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @expectedException LeagueWrap\Exception\BaseUrlException 
+	 * @expectedException JeffreyVdb\LeagueWrap\Exception\BaseUrlException 
 	 */
 	public function testRequestNoBaseUrl()
 	{
-		$client = new LeagueWrap\Client;
+		$client = new JeffreyVdb\LeagueWrap\Client;
 		$client->request('', []);
 	}
 }

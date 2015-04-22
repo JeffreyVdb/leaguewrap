@@ -1,6 +1,6 @@
 <?php
 
-use LeagueWrap\Api;
+use JeffreyVdb\LeagueWrap\Api;
 use Mockery as m;
 
 class ApiStatsTest extends PHPUnit_Framework_TestCase {
@@ -9,7 +9,7 @@ class ApiStatsTest extends PHPUnit_Framework_TestCase {
 
 	public function setUp()
 	{
-		$client       = m::mock('LeagueWrap\Client');
+		$client       = m::mock('JeffreyVdb\LeagueWrap\Client');
 		$this->client = $client;
 	}
 
@@ -30,7 +30,7 @@ class ApiStatsTest extends PHPUnit_Framework_TestCase {
 
 		$api   = new Api('key', $this->client);
 		$stats = $api->stats()->summary(74602);
-		$this->assertTrue($stats instanceof LeagueWrap\Dto\PlayerStatsSummaryList);
+		$this->assertTrue($stats instanceof JeffreyVdb\LeagueWrap\Dto\PlayerStatsSummaryList);
 	}
 
 	public function testSummaryArrayAccess()
@@ -45,7 +45,7 @@ class ApiStatsTest extends PHPUnit_Framework_TestCase {
 
 		$api   = new Api('key', $this->client);
 		$stats = $api->stats()->summary(74602);
-		$this->assertTrue($stats[0] instanceof LeagueWrap\Dto\PlayerStatsSummary);
+		$this->assertTrue($stats[0] instanceof JeffreyVdb\LeagueWrap\Dto\PlayerStatsSummary);
 	}
 
 	public function testSummarySummoner()
@@ -66,7 +66,7 @@ class ApiStatsTest extends PHPUnit_Framework_TestCase {
 		$api     = new Api('key', $this->client);
 		$bakasan = $api->summoner()->info('bakasan');
 		$api->stats()->summary($bakasan);
-		$this->assertTrue($bakasan->stats->playerStat(0) instanceof LeagueWrap\Dto\PlayerStatsSummary);
+		$this->assertTrue($bakasan->stats->playerStat(0) instanceof JeffreyVdb\LeagueWrap\Dto\PlayerStatsSummary);
 	}
 
 	public function testSummonerySummonerSeason()
@@ -90,7 +90,7 @@ class ApiStatsTest extends PHPUnit_Framework_TestCase {
 		$stats   = $api->stats();
 		$stats->setSeason(3);
 		$stats->summary($bakasan);
-		$this->assertTrue($bakasan->stats->playerStat(0) instanceof LeagueWrap\Dto\PlayerStatsSummary);
+		$this->assertTrue($bakasan->stats->playerStat(0) instanceof JeffreyVdb\LeagueWrap\Dto\PlayerStatsSummary);
 	}
 
 	public function testRanked()
@@ -105,7 +105,7 @@ class ApiStatsTest extends PHPUnit_Framework_TestCase {
 
 		$api   = new Api('key', $this->client);
 		$stats = $api->stats()->ranked(74602);
-		$this->assertTrue($stats->champion(0) instanceof LeagueWrap\Dto\ChampionStats);
+		$this->assertTrue($stats->champion(0) instanceof JeffreyVdb\LeagueWrap\Dto\ChampionStats);
 	}
 
 	public function testRankedArrayAccess()
@@ -120,7 +120,7 @@ class ApiStatsTest extends PHPUnit_Framework_TestCase {
 
 		$api   = new Api('key', $this->client);
 		$stats = $api->stats()->ranked(74602);
-		$this->assertTrue($stats[0] instanceof LeagueWrap\Dto\ChampionStats);
+		$this->assertTrue($stats[0] instanceof JeffreyVdb\LeagueWrap\Dto\ChampionStats);
 	}
 
 	public function testRankedArrayAccessSeason()
@@ -138,7 +138,7 @@ class ApiStatsTest extends PHPUnit_Framework_TestCase {
 		$stats = $api->stats();
 		$stats->setSeason(3);
 		$stats = $stats->ranked(74602);
-		$this->assertTrue($stats[0] instanceof LeagueWrap\Dto\ChampionStats);
+		$this->assertTrue($stats[0] instanceof JeffreyVdb\LeagueWrap\Dto\ChampionStats);
 	}
 }
 

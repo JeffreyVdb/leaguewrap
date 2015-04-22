@@ -4,7 +4,7 @@ class DtoStaticDataBlockTest extends PHPUnit_Framework_TestCase {
 
 	public function testItem()
 	{
-		$block = new LeagueWrap\Dto\StaticData\Block([
+		$block = new JeffreyVdb\LeagueWrap\Dto\StaticData\Block([
 			'items' => [
 				1 => [
 					'name' => 'item1',
@@ -19,12 +19,12 @@ class DtoStaticDataBlockTest extends PHPUnit_Framework_TestCase {
 		]);
 
 		$item = $block->item(2);
-		$this->assertTrue($item instanceof LeagueWrap\Dto\StaticData\BlockItem);
+		$this->assertTrue($item instanceof JeffreyVdb\LeagueWrap\Dto\StaticData\BlockItem);
 	}
 
 	public function testItemNotFound()
 	{
-		$block = new LeagueWrap\Dto\StaticData\Block([
+		$block = new JeffreyVdb\LeagueWrap\Dto\StaticData\Block([
 			'items' => [
 				1 => [
 					'name' => 'item1',
