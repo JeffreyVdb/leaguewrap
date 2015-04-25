@@ -11,6 +11,6 @@ class Api extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return 'leaguewrap.api';
+        return '\JeffreyVdb\LeagueWrap\Api';
     }
 }

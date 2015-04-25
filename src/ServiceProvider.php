@@ -14,8 +14,8 @@ class ServiceProvider extends LaravelServiceProvider
 
     public function register()
     {
-        $this->app->bind('leaguewrap.api', function () {
-            return new Api(config('leaguewrap.api_key'));
+        $this->app->bind('\JeffreyVdb\LeagueWrap\Api', function () {
+            return new Api(config('leaguewrap.api_key'), null, LaravelCache::class);
         });
     }
 
