@@ -1,6 +1,8 @@
 <?php
 namespace JeffreyVdb\LeagueWrap;
 
+use Predis\Client as PredisClient;
+
 /**
  * Class RedisCache
  *
@@ -12,7 +14,7 @@ class RedisCache implements CacheInterface
 
     public function __construct()
     {
-        $this->cache = new Predis\Client;
+        $this->cache = new PredisClient();
     }
 
     /**
@@ -26,7 +28,7 @@ class RedisCache implements CacheInterface
      */
     public function set($response, $key, $seconds)
     {
-        return $this->cache->set($key, $response, $seconds);
+        return $this->cache->setex($key, $seconds, serialize($response));
     }
 
     /**
@@ -48,7 +50,7 @@ class RedisCache implements CacheInterface
      */
     public function get($key)
     {
-        return $this->cache->get($key);
+        return unserialize($this->cache->get($key));
     }
 
 }
