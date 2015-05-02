@@ -12,10 +12,25 @@ class LumenServiceProvider extends LaravelServiceProvider
 {
     protected $defer = false;
 
+    private function getPreferredCache()
+    {
+        switch (env('CACHE_DRIVER')) {
+            case 'memcached':
+                return Cache::class;
+
+            case 'redis':
+            default:
+                return RedisCache::class;
+        }
+    }
+
     public function register()
     {
-        $this->app->bind('\JeffreyVdb\LeagueWrap\Api', function () {
-            return new Api(env('LW_LOL_API_KEY'), null, LaravelCache::class);
+        // Figure out which cache to use
+        $cacheClass = $this->getPreferredCache();
+
+        $this->app->bind('\JeffreyVdb\LeagueWrap\Api', function () use ($cacheClass) {
+            return new Api(env('LW_LOL_API_KEY'), null, $cacheClass);
         });
     }
 }
