@@ -2,6 +2,7 @@
 namespace JeffreyVdb\LeagueWrap;
 
 use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
+use Predis\Client;
 
 /**
  * Class LumenServiceProvider
@@ -20,7 +21,16 @@ class LumenServiceProvider extends LaravelServiceProvider
 
             case 'redis':
             default:
-                return RedisCache::class;
+                return function () {
+                    $server = env('LW_REDIS_HOST', '127.0.0.1');
+                    $port = env('LW_REDIS_PORT', '6379');
+
+                    return new RedisCache([
+                        'scheme' => 'tcp',
+                        'host'   => $server,
+                        'port'   => $port
+                    ]);
+                };
         }
     }
 

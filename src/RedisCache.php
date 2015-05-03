@@ -12,9 +12,9 @@ class RedisCache implements CacheInterface
 {
     protected $cache;
 
-    public function __construct()
+    public function __construct($config = null)
     {
-        $this->cache = new PredisClient();
+        $this->cache = $config ? new PredisClient($config) : new PredisClient();
     }
 
     /**
