@@ -578,7 +578,7 @@ abstract class AbstractApi {
 	protected function checkResponseErrors(Response $response)
 	{
 		$code = $response->getCode();
-		if (intval($code/100) != 2)
+		if (intval($code) != 200)
 		{
 			// we have an error!
 			$message = "Http Error.";
