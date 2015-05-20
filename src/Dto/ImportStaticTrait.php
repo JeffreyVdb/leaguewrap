@@ -17,9 +17,10 @@ trait ImportStaticTrait {
 		$fields  = [
 			$splHash => [],
 		];
+
 		foreach ($this->staticFields as $field => $data)
 		{
-			$fieldValue = $this->info[$field];
+			$fieldValue = isset($this->info[$field]) ? $this->info[$field] : null;
 			if ( ! isset($fields[$splHash][$data]))
 			{
 				$fields[$splHash][$data] = [];

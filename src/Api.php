@@ -245,8 +245,16 @@ class Api
     {
         if (null === $cache) {
             // use the built in cache interface
-            $cache = $this->cacheClass ? new $this->cacheClass : new Cache;
+            if ($this->cacheClass) {
+                $cache = is_string($this->cacheClass)
+                    ? new $this->cacheClass
+                    : (new \ReflectionFunction($this->cacheClass))->invoke();
+            }
+            else {
+                $cache = new Cache;
+            }
         }
+
         $this->cache = $cache;
         $this->remember = $seconds;
         return $this;
