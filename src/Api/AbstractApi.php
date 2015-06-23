@@ -351,7 +351,7 @@ abstract class AbstractApi {
 			if ($this->cache->has($cacheKey))
 			{
 				$content = $this->cache->get($cacheKey);
-				if (is_int($content))
+				if (is_numeric($content))
 				{
 					// this was a cached client error... throw it
                     $className = 'JeffreyVdb\LeagueWrap\Response\Http' . $content;
@@ -588,7 +588,7 @@ abstract class AbstractApi {
 				$message = trim($this->responseErrors[$code]);
 			}
 
-			$class = "JeffreyVdb\LeagueWrap\Response\Http$code";
+			$class = 'JeffreyVdb\LeagueWrap\Response\Http' . $code;
 			throw new $class($message, $code);
 		}
 	}
