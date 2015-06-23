@@ -69,6 +69,9 @@ class StaticOptimizer {
 		foreach ($this->requests as $source => $ids)
 		{
 			$result = [];
+            if (substr($source, -1) == 'y') {
+                $source = substr($source, 0, -1) . 'ie';
+            }
 			$method = 'get'.ucfirst($source);
 			if (count($ids) > 1)
 			{
