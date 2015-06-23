@@ -351,10 +351,11 @@ abstract class AbstractApi {
 			if ($this->cache->has($cacheKey))
 			{
 				$content = $this->cache->get($cacheKey);
-				if ($content instanceof HttpClientError)
+				if (is_numeric($content))
 				{
 					// this was a cached client error... throw it
-					throw $content;
+                    $className = 'JeffreyVdb\LeagueWrap\Response\Http' . $content;
+					throw new $className;
 				}
 			}
 			elseif ($this->cacheOnly)
@@ -374,7 +375,7 @@ abstract class AbstractApi {
 					if ($this->cacheClientError)
 					{
 						// cache client errors
-						$this->cache->set($clientError, $cacheKey, $this->seconds);
+						$this->cache->set($clientError->getHttpStatus(), $cacheKey, $this->seconds);
 					}
 					// rethrow the exception
 					throw $clientError;
@@ -587,7 +588,7 @@ abstract class AbstractApi {
 				$message = trim($this->responseErrors[$code]);
 			}
 
-			$class = "JeffreyVdb\LeagueWrap\Response\Http$code";
+			$class = 'JeffreyVdb\LeagueWrap\Response\Http' . $code;
 			throw new $class($message, $code);
 		}
 	}
